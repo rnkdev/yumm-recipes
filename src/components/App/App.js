@@ -1,18 +1,36 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import logo from './logo.svg';
+
+import AppHeader from '../AppHeader';
+
 import './App.css';
+
+function recipesView(props) {
+  return (
+    <p className="App-Recipes">
+      Here are the list of recipes: 
+    </p>
+  );
+}
+
+function savedRecipesView(props) {
+  return (
+    <p className="App-Saved">
+      Here are your saved recipes:
+    </p>
+  );
+}
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <AppHeader />
+        <Switch>
+          <Route exact path={'/'} component={recipesView} />
+          <Route exact path={'/saved'} component={savedRecipesView} />
+        </Switch>
       </div>
     );
   }
