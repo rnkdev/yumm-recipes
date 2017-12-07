@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//import Icon from 'material-ui-icons/Icon';
-import Paper from 'material-ui/Paper';
-import Magnify from 'material-ui-icons/Search';
 import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
@@ -23,7 +20,12 @@ const styles = theme => ({
 function SearchBar(props) {
   const { classes } = props;
   return (
-    <input type="text" className={classes.searchInput} placeholder="Search recipes..." />  
+    <input 
+      type="text"
+      className={classes.searchInput} 
+      placeholder="Search recipes..." 
+      onChange={(e) => props.searchRecipe(e.target.value)}
+    />  
   );
 }
 
