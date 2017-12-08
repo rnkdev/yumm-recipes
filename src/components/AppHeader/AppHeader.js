@@ -11,6 +11,7 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 
 import DynamicSearchBar from '../../containers/DynamicSearchBar';
+import ConnProgress from '../../containers/ConnProgress';
 
 const styles = theme => ({
   root: {
@@ -50,6 +51,7 @@ function AppHeader(props) {
           <Button color="contrast" component={NavLink} to={'/saved'} activeClassName={classes.savedButton}>Saved</Button>
         </Toolbar>
       </AppBar>
+      <ConnProgress />
     </div>
   );
 }
