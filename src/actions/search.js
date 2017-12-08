@@ -24,7 +24,7 @@ export function cleanError() {
 
 export function searchRecipe(query, start) {
   return dispatch => {
-    setLoading(true);
+    dispatch(setLoading(true));
     return _searchRecipe(query, start)
       .then(res => {
         if (res.status == 200) {
@@ -33,25 +33,26 @@ export function searchRecipe(query, start) {
         }
         else if (res.status == 400) {
           console.log('Bad Request');
-          setError('Bad Request');
+          dispatch(setError('Bad Request'));
         }
         else if (res.status == 409) {
           console.log('API Rate Limit Exceeded');
-          setError('API Rate Limit Exceeded');
+          dispatch(setError('API Rate Limit Exceeded'));
         } 
         else if (res.status == 500) {
           console.log('Internal Server Error');
-          setError('Internal Server Error');
+          dispatch(setError('Internal Server Error'));
         }
         else {
           console.log('Unknown API Error Detected');
-          setError('Unknown API Error Detected');
+          dispatch(setError('Unknown API Error Detected'));
         }
-        setLoading(false);
+        dispatch(setLoading(false));
       })
       .then(jsonData => {
         console.log({ receipeData: jsonData });
-        receiveRecipes(jsonData);
+        dispatch(setLoading(false));
+        dispatch(receiveRecipes(jsonData));
       })
   }
 }
