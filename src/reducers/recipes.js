@@ -3,6 +3,7 @@ import * as RecipeActions from '../actions/search';
 const initialState = {
   main: [],
   saved: [],
+  more: [],
   isLoading: false, 
   errorMessage: '',
 }
