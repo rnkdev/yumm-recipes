@@ -24,7 +24,11 @@ function SearchBar(props) {
       type="text"
       className={classes.searchInput} 
       placeholder="Search recipes..." 
-      onChange={(e) => props.searchRecipe(e.target.value)}
+      onKeyPress={(e) => { 
+        if (e.key == 'Enter') {
+          props.searchRecipe(e.target.value) 
+        }
+      }}
     />  
   );
 }
