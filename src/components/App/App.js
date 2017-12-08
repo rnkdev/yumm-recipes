@@ -2,16 +2,9 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import AppHeader from '../AppHeader';
+import RecipeView from '../../containers/RecipeViewPage';
 
 import './App.css';
-
-function recipesView(props) {
-  return (
-    <p className="App-Recipes">
-      Here are the list of recipes: 
-    </p>
-  );
-}
 
 function savedRecipesView(props) {
   return (
@@ -27,7 +20,7 @@ class App extends Component {
       <div className="App">
         <AppHeader />
         <Switch>
-          <Route exact path={'/'} component={recipesView} />
+          <Route exact path={'/'} component={RecipeView} />
           <Route exact path={'/saved'} component={savedRecipesView} />
         </Switch>
       </div>
