@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { searchRecipe } from '../actions/search';
 
 import RecipeView from '../components/RecipeView';
 
