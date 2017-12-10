@@ -41,9 +41,6 @@ function AppHeader(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="contrast" aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
           <Typography type="title" color="inherit" className={classes.fullFlex} component={Link} to={'/'} style={{textDecoration: 'none'}}>
             Yummy Recipes
           </Typography>
