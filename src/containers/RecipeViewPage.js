@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { searchRecipe } from '../actions/search';
+import { saveRecipe } from '../actions/save';
 
 import RecipeView from '../components/RecipeView';
 
@@ -14,7 +15,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    ...bindActionCreators({ searchRecipe }, dispatch),
+    ...bindActionCreators({ searchRecipe, saveRecipe }, dispatch),
     dispatch 
   };
 }
