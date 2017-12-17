@@ -2,7 +2,9 @@
   "name": "yumm-recipes",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rnkdev.github.io/yumm-recipes",
   "dependencies": {
+    "gh-pages": "^1.1.0",
     "material-ui": "next",
     "material-ui-icons": "^1.0.0-beta.17",
     "prop-types": "^15.6.0",
@@ -17,6 +19,8 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
