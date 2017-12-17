@@ -3,16 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 
 import AppHeader from '../AppHeader';
 import RecipeView from '../../containers/RecipeViewPage';
+import SavedRecipeView from '../../containers/SavedRecipeViewPage';
 
 import './App.css';
-
-function savedRecipesView(props) {
-  return (
-    <p className="App-Saved">
-      Here are your saved recipes:
-    </p>
-  );
-}
 
 class App extends Component {
   render() {
@@ -21,7 +14,7 @@ class App extends Component {
         <AppHeader />
         <Switch>
           <Route exact path={'/'} component={RecipeView} />
-          <Route exact path={'/saved'} component={savedRecipesView} />
+          <Route exact path={'/saved'} component={SavedRecipeView} />
         </Switch>
       </div>
     );
