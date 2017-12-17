@@ -9,6 +9,8 @@ import Infinite from 'react-infinite';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
 
+import SaveDialog from '../SaveDialog';
+
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -50,6 +52,8 @@ class RecipeView extends Component {
     this.state = { 
       recipes: [],
       query: '',
+      saveDialogOpen: false,
+      targetRecipe: '',
     }
   }
 
@@ -73,6 +77,21 @@ class RecipeView extends Component {
     }
   }
 
+  closeDialog = () => {
+    this.setState({
+      ...this.state,
+      saveDialogOpen: false,
+    });
+  }
+
+  openSaveRecipe = (recipe) => {
+    this.setState({
+      ...this.state,
+      saveDialogOpen: true,
+      targetRecipe: recipe,
+    });
+  }
+
   render() {
     const { classes, searchRecipe } = this.props;
     return (
@@ -89,6 +108,14 @@ class RecipeView extends Component {
           }}>
           >>
         </Button>
+        <SaveDialog
+          open={this.state.saveDialogOpen}
+          handleClickOpen={() => {}}
+          handleRequestClose={this.closeDialog}
+          menuName="Chicken Grill"
+          recipe={this.state.targetRecipe}
+          handleRequestSave={this.props.saveRecipe}
+        ></SaveDialog>
         <div className={classes.container}>
           <GridList cellHeight={180} className={classes.gridList}>
             <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
@@ -105,7 +132,9 @@ class RecipeView extends Component {
                     subtitle={<span>Ratings: {recipe.rating}</span>}
                     actionIcon={
                       <IconButton>
-                        <StarBorderIcon color="rgba(255, 255, 255, 0.54)" />
+                        <StarBorderIcon 
+                          color="rgba(255, 255, 255, 0.54)" 
+                          onClick={() => this.openSaveRecipe(recipe)}/>
                       </IconButton>
                     }
                   />
