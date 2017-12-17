@@ -1,4 +1,5 @@
 import * as RecipeActions from '../actions/search';
+import * as SaveRecipeActions from '../actions/save';
 
 const initialState = {
   main: [],
@@ -27,6 +28,12 @@ export default function recipes(state = initialState, action) {
         ...state,
         main: action.recipes
       };
+
+    case SaveRecipeActions.RECEIVE_SAVED_RECIPES:
+      return {
+        ...state,
+        saved: action.recipes
+      }
 
     default:
       return state;
